@@ -32,7 +32,7 @@ class Signup extends Component {
     render() {
 
         if (this.state.isSignup) {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
         }
 
         return (
@@ -59,7 +59,7 @@ class Signup extends Component {
                         </div>
 
                         <div className="new-account">
-                            <Link to="/login">  <h3>Account Exits? Login</h3> </Link>
+                            <Link to="/">  <h3>Account Exits? Login</h3> </Link>
                         </div>
                     </div>
 

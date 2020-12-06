@@ -68,7 +68,7 @@ export default class Builder extends Component {
 
         return (
             <Switch>
-                <Route path="/login" exact> <Login onLogin={this.loginHandler} /> </Route>
+                <Route path="/" exact> <Login onLogin={this.loginHandler} /> </Route>
                 <Route path="/signup" exact> <Signup onSignup={this.signupHandler} /> </Route>
                 <Route path="/home" exact> <Home user={this.state.login.username} /></Route>
             </Switch>
