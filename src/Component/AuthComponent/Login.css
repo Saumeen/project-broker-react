@@ -1,0 +1,71 @@
+.form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: darkcyan;
+    position: absolute;
+}
+
+.form h1 {
+    position: relative;
+    text-align: center;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.new-account h3 {
+    font-size: 10pt;
+    position: relative;
+    align-content: right;
+}
+
+.form-container {
+    position: absolute;
+    left: 50%;
+    top: 50vh;
+    width: 300px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 249, 0.699);
+    border-radius: 5%;
+}
+
+.form-input {
+    top: 10%;
+    position: relative;
+}
+
+.input,
+.password {
+    margin: 3%;
+    padding: 10px;
+    width: 60%;
+    border-radius: 3%;
+    border: none;
+    background-color: white;
+}
+
+.form-password {
+    top: 10%;
+    position: relative;
+}
+
+.form-submit {
+    position: relative;
+    align-items: center;
+    top: 20%;
+}
+
+.submit-button {
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5%;
+    background-color: cadetblue;
+    font-size: 12pt;
+}
