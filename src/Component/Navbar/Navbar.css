@@ -1,0 +1,47 @@
+.navbar-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    color: white;
+    height: 60px;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding-right: 10%;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar a li {
+    list-style-type: none;
+    font-size: 15pt;
+    font-weight: bold;
+    position: relative;
+    padding: 10px;
+}
+
+.navbar .logout {
+    font-size: 15pt;
+    font-weight: bold;
+    position: relative;
+}
+
+@media(max-width:500px) {
+    .navbar-wrapper {
+        height: 40px;
+    }
+    .navbar a li {
+        padding: 8px;
+    }
+    .navbar {
+        padding-right: 8%;
+    }
+}

@@ -1,62 +1,83 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
 
 import './Login.css';
+import { loginUser } from '../../redux/Action/authActions';
+
+import Loader from '../Loader/Loading';
+const Login = () => {
+
+    const isLogin = useSelector(state => state.auth.isLogin);
+    const loading = useSelector(state => state.auth.loading);
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState("");
+    const dispatch = useDispatch();
 
 
-class Login extends Component {
 
-    state = {
-        username: "",
-        password: "",
+    if (loading) {
+        return <Loader />
     }
 
-    inputChangeHandler = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+
+
+
+    const inputChangeHandler = (e) => {
+        console.log(isLogin);
+        setUser(e.target.value)
+        console.log(user);
     }
-    submitHandler = (e) => {
+    const passwordHalder = (e) => {
+        setPassword(e.target.value);
+    }
+    const submitHandler = (e) => {
+        console.log(isLogin);
         e.preventDefault();
         const cred = {
-            username: this.state.username,
-            password: this.state.password
+            username: user,
+            password: password
         }
 
-        this.props.onLogin(cred).then(val => { this.setState({ isValid: val }) });
+        dispatch(loginUser(cred))
+        console.log("Done")
     }
-    render() {
-
-        if (this.state.isValid) {
-            return <Redirect to="/home" />;
-        }
-
-        return (
-            <form onSubmit={this.submitHandler}>
-                <div className="form">
-
-                    <div className="form-container">
-                        <h1>Login Form</h1>
-                        <div className="form-input">
-                            <input type="text" name="username" placeholder="Username" className="input" onChange={(e) => this.inputChangeHandler(e)} />
-                        </div>
 
 
-                        <div className="form-password">
-                            <input type="password" name="password" placeholder="Password" className="password" onChange={(e) => this.inputChangeHandler(e)} />
-                        </div>
 
-                        <div className="form-submit">
-                            <button className="submit-button">Submit</button>
-                        </div>
+    if (isLogin) {
 
-                        <div className="new-account">
-                            <Link to="/signup">  <h3>New account? signup</h3> </Link>
-                        </div>
+        return <Redirect to="/home" />;
+    }
+
+    return (
+        <form onSubmit={submitHandler}>
+            <div className="form">
+
+                <div className="form-container">
+                    <h1>Login Form</h1>
+                    <div className="form-input">
+                        <input type="text" name="username" placeholder="Username" className="input" onChange={(e) => inputChangeHandler(e)} />
                     </div>
 
+
+                    <div className="form-password">
+                        <input type="password" name="password" placeholder="Password" className="password" onChange={(e) => passwordHalder(e)} />
+                    </div>
+
+                    <div className="form-submit">
+                        <button className="submit-button">Submit</button>
+                    </div>
+
+                    <div className="new-account">
+                        <Link to="/signup">  <h3>New account? signup</h3> </Link>
+                    </div>
                 </div>
-            </form>
-        )
-    }
+
+            </div>
+        </form>
+    )
+
 }
 
 export default Login;
